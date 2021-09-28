@@ -18,14 +18,28 @@ function gg(gname, type) {
 }
 
 window.addEventListener('load', () => {
-    console.log('onload')
-    gg('c-type', 'id').value = 'tag'
-    gg('c-tag', 'id').value = 'span'
-    gg('c-text', 'id').value = '立即领取'
-    console.log(gg('start-btn', 'class')[0])
+    // 尝试获取上次的值
+    chrome.storage.local.get({ "tasks": new Array() }, function (value) {
+        const { tagName, type, tagText, date, time, } = value.tasks
+        const nowDate = new Date()
+        gg('c-date', 'id').value = date || `${nowDate.getFullYear()}-${nowDate.getMonth() + 1}-${nowDate.getDate()}`
+        gg('c-time', 'id').value = time || '14:00:00'
+        gg('c-type', 'id').value = type || 'tag'
+        gg('c-tag', 'id').value = tagName || 'span'
+        gg('c-text', 'id').value = tagText || '立即领取'
+    })
     gg('start-btn', 'class')[0].onclick = () => {
-        chrome.storage.local.set({ "tasks": { tagName: gg('c-tag', 'id').value, type: gg('c-type', 'id').value, tagText: gg('c-text', 'id').value } }, function () {
-            // chrome.extension.sendRequest({ msg: "秒杀任务开始！" });
+        chrome.storage.local.set({
+            "tasks":
+            {
+                date: gg('c-date', 'id').value,
+                time: gg('c-time', 'id').value,
+                tagName: gg('c-tag', 'id').value,
+                type: gg('c-type', 'id').value,
+                tagText: gg('c-text', 'id').value
+            }
+        }, function () {
+            // chrome.extension.sendRequest({ msg: "任务开始！" });
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
                 chrome.tabs.executeScript(tabs[0].id, { file: 'js/excute.js' });
             });
