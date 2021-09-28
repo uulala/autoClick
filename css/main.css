@@ -1,0 +1,27 @@
+.setting-box {
+    position: fixed;
+    z-index: 10000;
+    bottom: 10px;
+    left: 45%;
+    background: pink;
+    padding: 10px 20px;
+}
+
+.setting-box .item {
+    display: flex;
+    margin: 5px 0;
+}
+.setting-box .label {
+    padding: 0 10px;
+}
+.setting-box .c-btns {
+    min-width: 150px;
+    min-height: 100px;
+}
+.setting-box .c-btn {
+    display: inline-block;
+    padding: 2px 10px;
+    margin: 2px 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}

@@ -1,0 +1,47 @@
+{
+    "name": "auto click",
+    "version": "1.0",
+    "description": "auto click something",
+    "manifest_version": 2,
+    "incognito": "split",
+    "icons": {
+        "16": "img/icon.png",
+        "48": "img/icon.png",
+        "128": "img/icon.png"
+    },
+    "permissions": [
+        "tabs",
+        "storage",
+        "webNavigation",
+        "notifications",
+        "activeTab",
+        "cookies",
+        "http://*/*",
+        "https://*/*"
+      ],
+    "browser_action": {
+        "default_icon": "img/icon.png",
+        "default_title": "ac",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": [
+            "js/background.js"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ],
+            "js": [
+                "js/main.js"
+            ],
+            "css": [
+                "css/main.css"
+            ],
+            "run_at": "document_start"
+        }
+    ]
+}

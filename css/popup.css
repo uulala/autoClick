@@ -1,0 +1,30 @@
+.body-box {
+    width: 280px;
+    padding: 10px 5px;
+}
+.item {
+    display: flex;
+    justify-content: space-around;
+    margin: 5px 10px;
+    height: 30px;
+}
+input {
+    height: 25px;
+}
+.start-btn {
+    cursor: pointer;
+    border: 1px solid #409eff;
+    border-radius: 5px;
+    padding: 2px 5px;
+    margin: 10px;
+    height: 25px;
+    line-height: 25px;
+    color: #fff;
+    background-color: #409eff;
+}
+input,
+select {
+    width: 180px;
+    height: 30px;
+    box-sizing: border-box;
+}
