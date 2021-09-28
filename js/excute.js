@@ -32,7 +32,7 @@ function myQueue(arr, cb, tt) {
         } else {
             console.log('pending...')
         }
-    }, tt)
+    }, tt || 500)
 }
 
 function gg(gname, type) {
@@ -58,7 +58,7 @@ function doClick(currentCName, type, currentLabel, tt) {
     const BTNS = [...gg(currentCName, type)]
     const temp = BTNS.filter(item => item.textContent.replace(/\s+/g, "") === currentLabel)
     console.log('all:', temp)
-    myQueue(temp, (item) => item.click(), tt || 500)
+    myQueue(temp, (item) => item.click(), tt)
 }
 
 function skillClick(tagName, type, tagText, date, time) {
